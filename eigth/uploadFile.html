@@ -1,0 +1,58 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+ <html xmlns="http://www.w3.org/1999/xhtml">
+ 
+ <head>
+   <title>Practical 8</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+<script type="text/javascript" language="javascript">
+function uploadFiles()
+{
+
+	var input = document.querySelector("input[type=file]");
+	alert("len:"+input.files.length);
+
+	var fd=new FormData();
+	for(i=0;i<input.files.length;i++)
+	{
+		fd.append("images["+i+"]",input.files[i]);
+	}
+	//fd.append("name","suraj");
+	//fd.append("sname","singh");
+
+	if(fd)
+	{
+		$.ajax(
+		{
+			url:"uploadFile.php",
+			type:"POST",
+			data:fd ,
+			contentType:false,
+			processData:false,
+			success:function(res){
+				document.getElementById("res").innerHTML = res;
+			},
+			
+			error: function(XHR, textStatus, errorThrown) {
+			   document.getElementById("res").innerHTML =textStatus;
+			}
+			
+		});
+	}
+	
+}
+
+</script>
+ </head>
+ 
+ <body>
+ <form method="post" enctype="multipart/form-data">
+	<input type="file" name="files" multiple />
+	<input type="button" value="Click me" onclick="uploadFiles()" />
+</form>
+ <div id="res">
+ <div/>
+ </body>
+ </html>
+

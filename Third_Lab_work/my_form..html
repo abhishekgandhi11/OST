@@ -1,0 +1,136 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+ <html xmlns="http://www.w3.org/1999/xhtml">
+ 
+ <head>
+   <title>Practical 7</title>
+   <style>
+	
+   fieldset{
+   margin:10px 25%;
+	width:50%;
+   }
+   
+   table{
+   text-size:14px;
+   }
+   
+   .txt{
+   width:200px;
+   height:25px;
+   border-radius:10px;
+   margin-left:10px;
+   }
+   
+   legend{color:red;
+   font-size:20px;}
+   span{
+   margin-left:10px;
+   color:red;}
+	</style>
+<script type="text/javascript" language="javascript">
+function checkValid()
+{
+
+		var flag=0;
+		var NAME=document.getElementById("name").value;
+		var DOB=document.getElementById("dob").value;
+		var PHONE=parseInt(document.getElementById("phn").value);
+		var EMAIL=document.getElementById("email").value;
+		var ADDRESS=document.getElementById("address").value;
+		var atpos = EMAIL.indexOf("@");
+		var dotpos = EMAIL.lastIndexOf(".");
+		var qualif=document.getElementById("qualif").value;
+		var passYear=document.getElementById("passYear").value;
+		var UniName=document.getElementById("uniname").value;
+		
+		if(NAME=="")
+		{
+			flag=1;
+			document.getElementById("Ename").innerHTML="Please Enter Your Name";
+		}
+		if(DOB=="")
+		{
+			flag=1;
+			document.getElementById("Edob").innerHTML="Please Enter Your Bday";
+		}
+		if(PHONE.length!=10)
+		{
+			flag=1;
+			document.getElementById("Ephn").innerHTML="Please Enter Your Valid Phone Number";
+		}
+		if(ADDRESS=="")
+		{
+			flag=1;
+			document.getElementById("Eadd").innerHTML="Please Enter Your Address";
+		}
+		if(EMAIL==""||atpos < 1 || dotpos < 1 || dotpos<atpos+2)
+		{
+			flag=1;
+			document.getElementById("Eemail").innerHTML="Please Enter Your Correct Email";
+		}
+		if(qualif=="Select")
+		{
+			flag=1;
+			document.getElementById("Equalif").innerHTML="Please Select Your Qualification";
+		}
+		if(passYear=="Select")
+		{
+			flag=1;
+			document.getElementById("EpassYear").innerHTML="Select Passing Year";
+		}
+		if(UniName=="")
+		{
+			flag=1;
+			document.getElementById("Euniname").innerHTML="Please Enter University Name";
+		}
+		if(flag==1)
+			return false;
+		else
+			return true;
+}
+</script>
+ </head>
+ 
+ <body>
+ <div align="center" style="font-size:36px;">Registration form</div>
+ <form method="get" enctype="multipart/form-data" action="StudentInfo.php">
+<fieldset>
+<legend>Personal Information</legend>
+<table >	
+<tr><td>Name :</td><td><input type="text" placeholder="Enter Name" name="Name" class="txt" id="name"/><span id="Ename"></span></td></tr>
+<tr><td>Gender :</td><td>
+	<input type="radio" name="Gender" value="male" checked="checked" /> Male<br/>
+	<input type="radio" name="Gender" value="female" /> Female </td></tr>
+	
+<tr>
+	<td >Date Of Bithday :</td>
+	<td><input type="Date" placeholder="Enter bday" name="Bday" class="txt" id="dob"/><span id="Edob"></span></td>
+</tr>
+<tr>
+	<td>Email :</td>
+	<td><input type="email" placeholder="Enter Email" name="Email" class="txt" id="email"/><span id="Eemail"></span></td>
+</tr>
+<tr>
+	<td>Mobile :</td>
+	<td><input type="text" placeholder="Enter Mobile " maxlength="10" name="Mobile" class="txt" id="phn"/><span id="Ephn"></span></td>
+</tr>
+<tr>
+	<td>Address :</td>
+	<td><textarea name="Address" class="txt" id="address"></textarea><span id="Eadd"></span></td>
+</tr>
+<tr>
+	<td colspan="2"><p align="center">
+	<input type="Reset" class="txt"><input type="Submit" name="Submit" class="txt" onclick="return checkValid();">
+</p> 
+</td>
+</tr>
+</table>
+</fieldset>
+</table>
+	</fieldset>
+ </form>
+ </body>
+ </html>
+

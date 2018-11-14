@@ -1,0 +1,11 @@
+<?php
+	session_start();	
+	if(isset($_SESSION['name']))
+	{
+		//setCookie("userName");
+		//setCookie("userPassword");
+		unset($_SESSION['name']);
+		SESSION_DESTROY();	
+	}
+	header('location:login.php');	
+?>
